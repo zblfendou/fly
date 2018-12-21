@@ -9,6 +9,6 @@ import javax.persistence.Entity;
 @Entity
 @Setter
 @Getter
-public class User extends BaseModel {
+public class Manager extends BaseModel {
     private String name;
 }

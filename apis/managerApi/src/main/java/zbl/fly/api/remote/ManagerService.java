@@ -1,5 +1,5 @@
 package zbl.fly.api.remote;
 
-public interface UserService {
+public interface ManagerService {
     void test();
 }

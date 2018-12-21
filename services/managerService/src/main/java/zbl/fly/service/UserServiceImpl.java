@@ -1,12 +1,11 @@
 package zbl.fly.service;
 
-import org.springframework.stereotype.Service;
-import zbl.fly.api.remote.UserService;
+import zbl.fly.api.remote.ManagerService;
 
 import javax.inject.Named;
 
-@Service("userService")
-public class UserServiceImpl implements UserService {
+@Named("managerService")
+public class UserServiceImpl implements ManagerService {
 
     @Override
     public void test() {
