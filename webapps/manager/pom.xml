@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>zbl.fly</groupId>
-            <artifactId>userApi</artifactId>
+            <artifactId>managerApi</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

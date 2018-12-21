@@ -13,7 +13,7 @@
     <name>services</name>
 
     <modules>
-        <module>userService</module>
+        <module>managerService</module>
         <module>bootstrap</module>
         <module>baseService</module>
     </modules>

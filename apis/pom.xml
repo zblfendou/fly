@@ -15,8 +15,8 @@
     <name>apis</name>
 
     <modules>
-        <module>userApi</module>
         <module>baseApi</module>
+        <module>managerApi</module>
     </modules>
 
     <properties>
