@@ -16,6 +16,7 @@ import zbl.fly.models.Manager;
 import zbl.fly.models.PermGroup;
 import zbl.fly.models.Role;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.criteria.Predicate;
 import java.security.SecureRandom;
@@ -29,9 +30,13 @@ import static org.springframework.util.StringUtils.hasText;
 public class ManagerServiceImpl implements ManagerService {
 
     private final static SecureRandom random = new SecureRandom();
+    @Inject
     private ManagerDao dao;
+    @Inject
     private RoleDao roleDao;
+    @Inject
     private PermDao permDao;
+    @Inject
     private PermGroupDao permGroupDao;
 
     @Override

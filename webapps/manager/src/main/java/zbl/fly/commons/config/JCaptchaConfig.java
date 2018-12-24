@@ -37,7 +37,7 @@ public class JCaptchaConfig {
     @SuppressWarnings("deprecation")
     public ImageCaptchaService captchaService() {
         int fontSize = 30;
-        int wordLength = 6;
+        int wordLength = 4;
         RandomFontGenerator fontGenerator = new RandomFontGenerator(fontSize, fontSize);/*, new Font[]{new Font("Chiller", Font.BOLD, fontSize),
                 new Font("Bell MT", Font.ITALIC, fontSize),
                 new Font("Bradley Hand ITC", Font.ITALIC, fontSize),
