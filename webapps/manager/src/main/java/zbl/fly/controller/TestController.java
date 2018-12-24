@@ -14,7 +14,7 @@ public class TestController {
     @RequestMapping("/test.do")
     public String test() {
         System.out.println(managerService);
-        return "test dubbo ok";
+        return "test dubbo ok success";
 
     }
 }
