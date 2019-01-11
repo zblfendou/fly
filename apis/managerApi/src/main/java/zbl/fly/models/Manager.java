@@ -49,6 +49,7 @@ public class Manager extends BaseModel {
      * 状态
      */
     @Column(length = 10)
+    @Enumerated(EnumType.STRING)
     private Status status = Status.NEW;
     private String phoneNum;
     private String email;

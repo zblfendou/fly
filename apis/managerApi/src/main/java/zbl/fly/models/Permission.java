@@ -19,7 +19,7 @@ public class Permission implements Serializable {
     private String perm;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "permGroup", foreignKey = @ForeignKey(name = "FK_PERM_GROUP"))
+    @JoinColumn(name = "permGroup",columnDefinition = "varchar(191) default null",foreignKey = @ForeignKey(name = "FK_PERM_GROUP"))
     @JsonIgnore
     private PermGroup permGroup;
     @JsonIgnore
