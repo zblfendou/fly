@@ -3,11 +3,12 @@ package zbl.fly.controller;
 import com.octo.captcha.CaptchaException;
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import zbl.fly.base.vos.AjaxResult;
 import zbl.fly.commons.config.JCaptchaConfig;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
+@Api(description = "登录验证码")
 @Controller
 @RequestMapping("/jcaptcha")
 @Slf4j
@@ -34,7 +36,9 @@ public class JaptchaController {
     private HttpServletRequest request;
 
     @SuppressWarnings("SameReturnValue")
-    @RequestMapping("/{id}.do")
+    @ApiOperation(notes = "获取验证码", value = "获取验证码")
+    @ApiImplicitParam(name = "id", value = "验证码ID", required = true, paramType = "query", dataType = "String")
+    @GetMapping("/{id}.do")
     public ModelAndView showCaptcha(@PathVariable("id") String id) {
 
         final BufferedImage image = generateImageFromID(id);
@@ -64,7 +68,7 @@ public class JaptchaController {
 
     }
 
-    @RequestMapping("/needCaptcha.do")
+    @PostMapping("/needCaptcha.do")
     @ResponseBody
     public AjaxResult needCaptcha() {
         final Object needcaptcha = request.getSession(true).getAttribute(JCaptchaConfig.S_KEY_NEED_CAPTCHA);
@@ -83,7 +87,8 @@ public class JaptchaController {
      *
      * @return
      */
-    @RequestMapping("/refreCaptcha.do")
+    @ApiOperation(value = "刷新验证码", notes = "刷新验证码")
+    @PostMapping("/refreCaptcha.do")
     @ResponseBody
     public AjaxResult refreshCaptcha() {
         return AjaxResult.success(generateCaptchaID());

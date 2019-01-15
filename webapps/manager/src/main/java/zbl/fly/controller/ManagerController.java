@@ -1,9 +1,10 @@
 package zbl.fly.controller;
 
+import io.swagger.annotations.*;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.subject.Subject;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import zbl.fly.api.remote.ManagerService;
@@ -21,6 +22,7 @@ import java.util.UUID;
 
 import static org.springframework.util.StringUtils.isEmpty;
 
+@Api(description = "登录管理")
 @RestController
 public class ManagerController {
     @Inject
@@ -31,12 +33,27 @@ public class ManagerController {
     private ManagerService managerService;
 
 
-    @RequestMapping("/nologinAjax.do")
+    @PostMapping("/nologinAjax.do")
     public AjaxResult nologin() {
         return AjaxResult.error(-1, "Not Logined");
     }
 
-    @RequestMapping("/ajaxlogin.do")
+    @ApiOperation(value = "登录", notes = "登录")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "name", value = "用户名", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "code", value = "验证码", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "captchaID", value = "验证码ID", dataType = "String", paramType = "query")
+    })
+    @ApiResponses(value = {
+            @ApiResponse(code = 3, message = "验证码超时"),
+            @ApiResponse(code = 1, message = "验证码错误"),
+            @ApiResponse(code = 2, message = "验证码错误"),
+            @ApiResponse(code = -2, message = "尚未激活"),
+            @ApiResponse(code = -3, message = "已停用"),
+            @ApiResponse(code = 0, message = "登录成功"),
+    })
+    @PostMapping("/ajaxlogin.do")
     public AjaxResult ajaxLogin(@RequestParam("name") String name,
                                 @RequestParam("password") char[] password,
                                 @RequestParam(value = "code", required = false) String code,
@@ -78,15 +95,16 @@ public class ManagerController {
         return UUID.randomUUID().toString();
     }
 
-
-    @RequestMapping("/ajaxlogout.do")
+    @ApiOperation(value = "登出",notes = "登出")
+    @PostMapping("/ajaxlogout.do")
     public AjaxResult logout() {
         long managerID = managerService.getManager(securityHelper.getCurrentPrincipal()).getId();
         SecurityUtils.getSubject().logout();
         return AjaxResult.success(managerID);
     }
 
-    @RequestMapping("/getCurrentManager.do")
+    @ApiOperation(notes = "获取当前登录用户信息", value = "获取当前登录用户信息")
+    @PostMapping("/getCurrentManager.do")
     public AjaxResult getCurrentManager() {
         Manager manager = managerService.getManager(securityHelper.getCurrentPrincipal());
         return AjaxResult.success(manager);
