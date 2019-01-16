@@ -20,8 +20,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <hibernate.version>5.2.12.Final</hibernate.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <name>local</name>
+            <id>local</id>
+            <url>http://122.14.213.151:8089/repository/internal/</url>
+        </repository>
+    </repositories>
     <parent>
         <groupId>io.spring.platform</groupId>
         <artifactId>platform-bom</artifactId>

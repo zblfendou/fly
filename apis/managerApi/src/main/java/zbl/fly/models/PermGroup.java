@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Cacheable
 public class PermGroup implements Serializable {
 
     @Id

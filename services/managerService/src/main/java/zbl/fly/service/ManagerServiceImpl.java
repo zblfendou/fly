@@ -176,7 +176,6 @@ public class ManagerServiceImpl implements ManagerService {
         assert Manager.encrypt(oldPwd, manager.getSalt()).equals(manager.getSecurity()) : "旧密码错误";
         manager.setPassword(newPwd);
         dao.save(manager);
-
     }
 
     @Override

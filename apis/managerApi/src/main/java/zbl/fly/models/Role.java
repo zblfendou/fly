@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @Entity
 @Setter
 @Getter
+@Cacheable
 @Table(uniqueConstraints = @UniqueConstraint(name = "UK_ROLE_TEXT", columnNames = "roleText"))
 public class Role implements Serializable {
     public final static Role SUPERVISOR;

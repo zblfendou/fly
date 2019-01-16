@@ -84,8 +84,6 @@ public class JaptchaController {
 
     /**
      * 显示（刷新)验证码
-     *
-     * @return
      */
     @ApiOperation(value = "刷新验证码", notes = "刷新验证码")
     @PostMapping("/refreCaptcha.do")

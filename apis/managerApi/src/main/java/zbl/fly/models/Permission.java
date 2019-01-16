@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Entity
 @Setter
 @Getter
+@Cacheable
 public class Permission implements Serializable {
     public static final Permission SUPERVISOR = new Permission("SuperVisor", "超级管理员", null, 0);
     public static final String PERM_SUPERVISOR = "SuperVisor:*";
