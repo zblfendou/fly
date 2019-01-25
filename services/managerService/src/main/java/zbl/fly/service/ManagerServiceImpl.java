@@ -1,6 +1,5 @@
 package zbl.fly.service;
 
-import lombok.val;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -8,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import zbl.fly.api.remote.ManagerService;
 import zbl.fly.base.vos.QueryResult;
+import zbl.fly.commons.IDGenerator;
 import zbl.fly.daos.ManagerDao;
 import zbl.fly.daos.PermDao;
 import zbl.fly.daos.PermGroupDao;
@@ -18,7 +18,6 @@ import zbl.fly.models.Role;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.criteria.Predicate;
 import java.security.SecureRandom;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -38,9 +37,12 @@ public class ManagerServiceImpl implements ManagerService {
     private PermDao permDao;
     @Inject
     private PermGroupDao permGroupDao;
+    @Inject
+    private IDGenerator idGenerator;
 
     @Override
     public Manager getManagerByUserName(String userName) {
+        System.out.println("IDGenerator："+idGenerator.nextId());
         return dao.findByUserName(userName);
     }
 

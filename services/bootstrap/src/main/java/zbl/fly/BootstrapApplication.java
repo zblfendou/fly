@@ -34,7 +34,6 @@ public class BootstrapApplication {
         new SpringApplicationBuilder().parent(context).web(false).bannerMode(OFF)
                 .sources(DubboDeployer.class).run(args);
         log.debug("Deployed Services to Dubbo");
-
         CountDownLatch closeLatch = context.getBean(CountDownLatch.class);
         closeLatch.await();
     }
