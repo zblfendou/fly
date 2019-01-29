@@ -219,9 +219,4 @@ public class ManagerServiceImpl implements ManagerService {
         dao.save(manager);
 
     }
-
-    @Override
-    public void test() {
-
-    }
 }

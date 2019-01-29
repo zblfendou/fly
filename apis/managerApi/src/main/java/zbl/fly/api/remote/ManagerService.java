@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface ManagerService {
-    void test();
     Manager getManagerByUserName(String userName);
 
     Manager createManager(String username, String name, String phoneNum, String email, String roleName, String pwd);
