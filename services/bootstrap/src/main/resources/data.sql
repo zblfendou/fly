@@ -7,6 +7,7 @@ INSERT IGNORE INTO `manager` (`id`, `version`, `salt`, `security`, `status`, `us
 INSERT IGNORE INTO `role` (`roleName`, `createTime`, `roleText`, `superVisor`) VALUES
   ('SuperVisor', '2017-12-05 15:14:58', '超级管理员', b'1');
 
+INSERT INTO `Permission` (`perm`, `name`, `o`, `permGroup`) VALUES ('SuperVisor', 'SuperVisor', 0, NULL);
 -- 初始化  roleperm 的数据：
 INSERT IGNORE INTO `roleperm` (`role`, `perm`) VALUES
   ('SuperVisor', 'SuperVisor');
