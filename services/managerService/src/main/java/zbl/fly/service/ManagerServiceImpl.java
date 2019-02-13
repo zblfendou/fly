@@ -170,7 +170,6 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-
     @Transactional
     public void modifyManagerPwd(long id, String oldPwd, String newPwd) {
         Manager manager = dao.findOne(id);

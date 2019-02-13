@@ -55,7 +55,7 @@ public class IndexController {
             @ApiResponse(code = -3, message = "已停用"),
             @ApiResponse(code = 0, message = "登录成功"),
     })
-    @PostMapping("/ajaxlogin.do")
+    @RequestMapping("/ajaxlogin.do")
     public AjaxResult ajaxLogin(@RequestParam("name") String name,
                                 @RequestParam("password") char[] password,
                                 @RequestParam(value = "code", required = false) String code,

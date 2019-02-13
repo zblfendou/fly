@@ -26,7 +26,7 @@ public class ManagerController {
             @ApiImplicitParam(name = "oldPwd", value = "旧密码", dataType = "string", paramType = "form", required = true),
             @ApiImplicitParam(name = "newPwd", value = "新密码", dataType = "string", paramType = "form", required = true),
     })
-    @PostMapping("/modifyManagerPwd.do")
+    @RequestMapping("/modifyManagerPwd.do")
     public AjaxResult modifyManagerPwd(@RequestParam("id") long id,
                                        @RequestParam("oldPwd") String oldPwd,
                                        @RequestParam("newPwd") String newPwd) {

@@ -73,7 +73,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <version>8.0.11</version>
             <scope>compile</scope>
         </dependency>
 
@@ -104,6 +104,11 @@
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
             <version>3.5.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
 
