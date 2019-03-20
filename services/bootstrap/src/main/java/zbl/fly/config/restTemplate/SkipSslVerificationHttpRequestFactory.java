@@ -1,4 +1,4 @@
-package zbl.fly.config;
+package zbl.fly.config.restTemplate;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

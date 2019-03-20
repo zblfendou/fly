@@ -1,4 +1,4 @@
-package zbl.fly.config;
+package zbl.fly.config.restTemplate;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
