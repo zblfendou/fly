@@ -37,12 +37,9 @@ public class ManagerServiceImpl implements ManagerService {
     private PermDao permDao;
     @Inject
     private PermGroupDao permGroupDao;
-    @Inject
-    private IDGenerator idGenerator;
 
     @Override
     public Manager getManagerByUserName(String userName) {
-        System.out.println("IDGenerator："+idGenerator.nextId());
         return dao.findByUserName(userName);
     }
 

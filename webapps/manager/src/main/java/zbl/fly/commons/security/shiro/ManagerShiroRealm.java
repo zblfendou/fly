@@ -73,7 +73,7 @@ public class ManagerShiroRealm extends AuthorizingRealm {
         Manager manager = managerService.getManagerByUserName(username);
 
         if (manager == null) {
-            //木有找到用户
+            //没有找到用户
             throw new UnknownAccountException("没有找到该账号");
         }
     /* if(Boolean.true.equals(manager.getLocked())) {
