@@ -3,9 +3,6 @@ package zbl.fly.controller;
 import com.octo.captcha.CaptchaException;
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +19,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
-@Api(description = "登录验证码")
 @Controller
 @RequestMapping("/jcaptcha")
 @Slf4j
@@ -35,9 +31,6 @@ public class JaptchaController {
     @Inject
     private HttpServletRequest request;
 
-    @SuppressWarnings("SameReturnValue")
-    @ApiOperation(notes = "获取验证码", value = "获取验证码")
-    @ApiImplicitParam(name = "id", value = "验证码ID", required = true, paramType = "query", dataType = "String")
     @GetMapping("/{id}.do")
     public ModelAndView showCaptcha(@PathVariable("id") String id) {
 
@@ -82,10 +75,7 @@ public class JaptchaController {
         return UUID.randomUUID().toString();
     }
 
-    /**
-     * 显示（刷新)验证码
-     */
-    @ApiOperation(value = "刷新验证码", notes = "刷新验证码")
+
     @PostMapping("/refreCaptcha.do")
     @ResponseBody
     public AjaxResult refreshCaptcha() {
