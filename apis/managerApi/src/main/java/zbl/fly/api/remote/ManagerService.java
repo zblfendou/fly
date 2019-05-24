@@ -1,11 +1,10 @@
 package zbl.fly.api.remote;
 
-import zbl.fly.base.vos.QueryResult;
+import zbl.fly.base.utils.QueryResult;
 import zbl.fly.models.Manager;
 import zbl.fly.models.PermGroup;
 import zbl.fly.models.Role;
 
-import java.util.Date;
 import java.util.List;
 
 public interface ManagerService {

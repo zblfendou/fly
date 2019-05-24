@@ -1,4 +1,4 @@
-package zbl.fly.base.vos;
+package zbl.fly.base.utils;
 
 import lombok.Getter;
 

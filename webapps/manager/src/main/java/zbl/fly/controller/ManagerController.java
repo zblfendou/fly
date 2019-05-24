@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import zbl.fly.api.remote.ManagerService;
-import zbl.fly.base.vos.AjaxResult;
+import zbl.fly.base.utils.AjaxResult;
 
 import javax.inject.Inject;
 

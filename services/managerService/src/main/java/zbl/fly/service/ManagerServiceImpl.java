@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import zbl.fly.api.remote.ManagerService;
-import zbl.fly.base.vos.QueryResult;
+import zbl.fly.base.utils.QueryResult;
 import zbl.fly.daos.ManagerDao;
 import zbl.fly.daos.PermDao;
 import zbl.fly.daos.PermGroupDao;

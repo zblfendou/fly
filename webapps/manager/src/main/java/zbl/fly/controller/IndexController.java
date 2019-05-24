@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import zbl.fly.api.remote.ManagerService;
 import zbl.fly.api.remote.SecurityHelper;
-import zbl.fly.base.vos.AjaxResult;
+import zbl.fly.base.utils.AjaxResult;
 import zbl.fly.commons.config.JCaptchaConfig;
 import zbl.fly.commons.security.shiro.CaptchaException;
 import zbl.fly.commons.security.shiro.UsernamePasswordCaptchaToken;
