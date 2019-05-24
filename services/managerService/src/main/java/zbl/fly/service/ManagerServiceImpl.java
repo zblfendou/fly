@@ -7,7 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import zbl.fly.api.remote.ManagerService;
 import zbl.fly.base.vos.QueryResult;
-import zbl.fly.commons.IDGenerator;
 import zbl.fly.daos.ManagerDao;
 import zbl.fly.daos.PermDao;
 import zbl.fly.daos.PermGroupDao;
@@ -15,10 +14,13 @@ import zbl.fly.daos.RoleDao;
 import zbl.fly.models.Manager;
 import zbl.fly.models.PermGroup;
 import zbl.fly.models.Role;
+import zbl.fly.quartz.SchedulingUtils;
+import zbl.fly.task.TestTask;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.security.SecureRandom;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -37,9 +39,12 @@ public class ManagerServiceImpl implements ManagerService {
     private PermDao permDao;
     @Inject
     private PermGroupDao permGroupDao;
+    @Inject
+    private SchedulingUtils schedulingUtils;
 
     @Override
     public Manager getManagerByUserName(String userName) {
+        schedulingUtils.addTimedTaskSchedule(new TestTask("测试", LocalDateTime.now().plusSeconds(10)));
         return dao.findByUserName(userName);
     }
 
