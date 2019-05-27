@@ -71,12 +71,11 @@ public class RedisClient {
         InputStream is = RedisCacheUtil.getFileInputStream(REDISSON_CONFIG);
         assertThat(is).isNotNull();
         Config config = Config.fromYAML(is);
-
         return Redisson.create(config);
     }
 
     public RedisClient() {
-        this(createRedisson(), RedisCacheUtil.DEFAULT_EXPIRY_IN_SECONDS);
+        this(createRedisson(), RedisCacheUtil.getExpiryInSeconds("redis.expiryInSeconds.default"));
     }
 
     @SneakyThrows
