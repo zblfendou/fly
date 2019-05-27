@@ -7,21 +7,20 @@ import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import zbl.fly.api.remote.ManagerService;
 import zbl.fly.base.utils.QueryResult;
-import zbl.fly.daos.ManagerDao;
-import zbl.fly.daos.PermDao;
-import zbl.fly.daos.PermGroupDao;
-import zbl.fly.daos.RoleDao;
+import zbl.fly.base.utils.RedisConstant;
+import zbl.fly.commons.redis.RedisClient;
+import zbl.fly.daos.*;
 import zbl.fly.models.Manager;
 import zbl.fly.models.PermGroup;
 import zbl.fly.models.Role;
+import zbl.fly.models.TestRedisModel;
 import zbl.fly.quartz.SchedulingUtils;
-import zbl.fly.task.TestTask;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.security.SecureRandom;
-import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static org.springframework.data.domain.Sort.Direction.ASC;
@@ -41,12 +40,24 @@ public class ManagerServiceImpl implements ManagerService {
     private PermGroupDao permGroupDao;
     @Inject
     private SchedulingUtils schedulingUtils;
+    @Inject
+    private RedisClient redisClient;
+    @Inject
+    private TestRedisModelDao testRedisModelDao;
 
     @Override
     public Manager getManagerByUserName(String userName) {
-        schedulingUtils.addTimedTaskSchedule(new TestTask("测试", LocalDateTime.now().plusSeconds(10)));
+        //测试redis
+        TestRedisModel testRedisModel = redisClient.get(RedisConstant.REDIS_TEST_NAME, userName);
+        if (testRedisModel == null) {
+            testRedisModel = testRedisModelDao.findByName(userName);
+            if (testRedisModel != null) {
+                redisClient.set(RedisConstant.REDIS_TEST_NAME, userName, testRedisModel,10, TimeUnit.SECONDS);
+            }
+        }
         return dao.findByUserName(userName);
     }
+
 
     @Override
     @Transactional

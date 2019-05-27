@@ -14,7 +14,7 @@
  *
  */
 
-package zbl.fly.config.redis;
+package zbl.fly.commons.redis;
 
 import lombok.Getter;
 import lombok.NonNull;
@@ -27,8 +27,6 @@ import org.redisson.api.RMapCache;
 import org.redisson.api.RScript;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.inject.Named;
 import java.io.InputStream;

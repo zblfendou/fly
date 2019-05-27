@@ -13,7 +13,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Test;
 import zbl.fly.baseTester.AbstractTester;
-import zbl.fly.config.redis.RedisClient;
+import zbl.fly.commons.redis.RedisClient;
 
 import javax.inject.Inject;
 import java.io.Serializable;

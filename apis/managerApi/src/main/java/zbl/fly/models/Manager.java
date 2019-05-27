@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
+import lombok.ToString;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
@@ -20,7 +21,8 @@ import static org.springframework.util.StringUtils.hasText;
 @Entity
 @Setter
 @Getter
-@Cacheable
+//@Cacheable
+@ToString
 public class Manager extends BaseModel {
     private static final char[] DIGITS = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
     public static final Charset UTF_8 = StandardCharsets.UTF_8;
