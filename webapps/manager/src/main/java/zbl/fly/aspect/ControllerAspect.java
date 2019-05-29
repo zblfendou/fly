@@ -2,10 +2,12 @@ package zbl.fly.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import zbl.fly.aspect.annotation.ControllerLog;
+import zbl.fly.base.utils.AjaxResult;
 
 import javax.inject.Named;
 
@@ -21,12 +23,14 @@ import javax.inject.Named;
 @Named
 public class ControllerAspect {
 
-    @Pointcut("@annotation(zbl.fly.aspect.annotation.ControllerLog)")
+    @Pointcut("@annotation(zbl.fly.aspect.annotation.ControllerLog)&&execution(public zbl.fly.base.utils.AjaxResult *(..))")
     public void cutMethod() {
     }
 
     @Around("cutMethod()&&@annotation(controllerLog)")
-    public void beforeMethod(JoinPoint jp, ControllerLog controllerLog) {
+    public void cuntAround(ProceedingJoinPoint jp, ControllerLog controllerLog) throws Throwable {
         log.debug(String.format(controllerLog.value(), jp.getArgs()));
+        AjaxResult result = (AjaxResult) jp.proceed();
+        log.debug("ajaxResult status:{}",result.getStatus());
     }
 }
