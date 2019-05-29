@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import zbl.fly.api.remote.ManagerService;
 import zbl.fly.api.remote.SecurityHelper;
+import zbl.fly.aspect.annotation.ControllerLog;
 import zbl.fly.base.utils.AjaxResult;
 import zbl.fly.commons.config.JCaptchaConfig;
 import zbl.fly.commons.security.shiro.CaptchaException;
@@ -38,6 +39,7 @@ public class IndexController {
 
 
     @RequestMapping("/ajaxlogin.do")
+    @ControllerLog(value = "登录,用户名%1$s ，密码：%2$s")
     public AjaxResult ajaxLogin(@RequestParam("name") String name,
                                 @RequestParam("password") char[] password,
                                 @RequestParam(value = "code", required = false) String code,
