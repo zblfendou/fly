@@ -3,10 +3,7 @@ package zbl.fly.controller;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.subject.Subject;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import zbl.fly.api.remote.ManagerService;
 import zbl.fly.api.remote.SecurityHelper;
 import zbl.fly.aspect.annotation.ControllerLog;
@@ -22,6 +19,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import static org.springframework.util.StringUtils.isEmpty;
+import static zbl.fly.base.utils.AjaxResult.success;
 
 @RestController
 public class IndexController {
@@ -69,8 +67,17 @@ public class IndexController {
                 return AjaxResult.error(-3, "已停用");
 
         }
-        return AjaxResult.success();
+        return success();
     }
+
+    @RequestMapping("/modifyUserInfo.do")
+    public AjaxResult modifyUserInfo(@RequestParam("name") String name,
+                                     @RequestParam("phoneNum") String phoneNum,
+                                     @RequestParam("email") String email) {
+        managerService.modifyManagerInfo(securityHelper.getCurrentPrincipal(), name, phoneNum, email);
+        return success();
+    }
+
 
     private AjaxResult buildErrorAjaxResult(int errorCode) {
         request.getSession(true).setAttribute(JCaptchaConfig.S_KEY_NEED_CAPTCHA, new Date().getTime());
@@ -86,14 +93,14 @@ public class IndexController {
     public AjaxResult logout() {
         long managerID = managerService.getManager(securityHelper.getCurrentPrincipal()).getId();
         SecurityUtils.getSubject().logout();
-        return AjaxResult.success(managerID);
+        return success(managerID);
     }
 
 
     @RequestMapping("/getCurrentManager.do")
     public AjaxResult getCurrentManager() {
         Manager manager = managerService.getManager(securityHelper.getCurrentPrincipal());
-        return AjaxResult.success(manager);
+        return success(manager);
     }
 
 

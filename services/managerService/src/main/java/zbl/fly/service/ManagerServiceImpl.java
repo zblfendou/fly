@@ -1,11 +1,15 @@
 package zbl.fly.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import zbl.fly.api.remote.ManagerService;
+import zbl.fly.base.utils.AfterCommitExecutor;
 import zbl.fly.base.utils.QueryResult;
 import zbl.fly.base.utils.RedisConstant;
 import zbl.fly.commons.redis.RedisClient;
@@ -27,6 +31,7 @@ import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.util.StringUtils.hasText;
 
 @Named("managerService")
+@Slf4j
 public class ManagerServiceImpl implements ManagerService {
 
     private final static SecureRandom random = new SecureRandom();
@@ -44,6 +49,8 @@ public class ManagerServiceImpl implements ManagerService {
     private RedisClient redisClient;
     @Inject
     private TestRedisModelDao testRedisModelDao;
+    @Inject
+    private AfterCommitExecutor afterCommitExecutor;
 
     @Override
     public Manager getManagerByUserName(String userName) {
@@ -115,6 +122,14 @@ public class ManagerServiceImpl implements ManagerService {
         manager.setPhoneNum(phoneNum);
         manager.setEmail(email);
         dao.save(manager);
+        afterCommitExecutor.execute(() -> log.error("事务结束后执行：[{}]",manager.getName()));
+//        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+//                                                                      @Override
+//                                                                      public void afterCommit() {
+//                                                                          log.debug("事务提交以后执行:{}",manager.getEmail());
+//                                                                      }
+//                                                                  }
+//        );
     }
 
     @Override
