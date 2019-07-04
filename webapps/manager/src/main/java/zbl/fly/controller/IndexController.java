@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import zbl.fly.api.remote.ManagerService;
 import zbl.fly.api.remote.SecurityHelper;
 import zbl.fly.aspect.annotation.ControllerLog;
-import zbl.fly.base.utils.AjaxResult;
+import zbl.fly.commons.AjaxResult;
 import zbl.fly.commons.config.JCaptchaConfig;
 import zbl.fly.commons.security.shiro.CaptchaException;
 import zbl.fly.commons.security.shiro.UsernamePasswordCaptchaToken;
@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import static org.springframework.util.StringUtils.isEmpty;
-import static zbl.fly.base.utils.AjaxResult.success;
+import static zbl.fly.commons.AjaxResult.success;
 
 @RestController
 public class IndexController {

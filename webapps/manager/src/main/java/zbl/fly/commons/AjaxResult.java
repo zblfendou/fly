@@ -1,4 +1,4 @@
-package zbl.fly.base.utils;
+package zbl.fly.commons;
 
 import java.io.Serializable;
 

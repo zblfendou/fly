@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import zbl.fly.aspect.annotation.ControllerLog;
-import zbl.fly.base.utils.AjaxResult;
+import zbl.fly.commons.AjaxResult;
 
 import javax.inject.Named;
 
@@ -22,7 +22,7 @@ import javax.inject.Named;
 @Named
 public class ControllerAspect {
 
-    @Pointcut("@annotation(zbl.fly.aspect.annotation.ControllerLog)&&execution(public zbl.fly.base.utils.AjaxResult *(..))")
+    @Pointcut("@annotation(zbl.fly.aspect.annotation.ControllerLog)&&execution(public zbl.fly.commons.AjaxResult *(..))")
     public void cutMethod() {
     }
 

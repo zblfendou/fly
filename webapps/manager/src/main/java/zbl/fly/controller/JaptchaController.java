@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import zbl.fly.base.utils.AjaxResult;
+import zbl.fly.commons.AjaxResult;
 import zbl.fly.commons.config.JCaptchaConfig;
 
 import javax.imageio.ImageIO;

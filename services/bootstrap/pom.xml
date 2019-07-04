@@ -83,6 +83,10 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -91,21 +95,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <executable>true</executable>
-                </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source><!-- 源代码使用的开发版本 -->
-                    <target>1.8</target><!-- 需要生成的目标class文件的编译版本 -->
-                    <!-- 一般而言，target和source保持一致的，但有时候不同：为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中需要不使用低版本jdk不支持的语法) -->
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 </project>

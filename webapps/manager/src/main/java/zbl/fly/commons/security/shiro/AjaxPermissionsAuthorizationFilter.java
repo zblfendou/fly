@@ -5,7 +5,7 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter;
 import org.apache.shiro.web.util.WebUtils;
-import zbl.fly.base.utils.AjaxResult;
+import zbl.fly.commons.AjaxResult;
 
 import javax.inject.Inject;
 import javax.servlet.ServletRequest;

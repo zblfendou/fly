@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.util.NestedServletException;
-import zbl.fly.base.utils.AjaxResult;
+import zbl.fly.commons.AjaxResult;
 
 import javax.inject.Inject;
 import javax.servlet.*;
