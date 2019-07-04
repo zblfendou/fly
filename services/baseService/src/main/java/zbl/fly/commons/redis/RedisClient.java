@@ -38,7 +38,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * RedisClient implemented using Redisson library
@@ -67,7 +66,6 @@ public class RedisClient {
     public static RedissonClient createRedisson() {
 
         InputStream is = RedisCacheUtil.getFileInputStream(REDISSON_CONFIG);
-        assertThat(is).isNotNull();
         Config config = Config.fromYAML(is);
         return Redisson.create(config);
     }

@@ -11,10 +11,8 @@ import javax.inject.Inject;
 import java.io.IOException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = ServiceTesterConfig.class/*, webEnvironment = SpringBootTest.WebEnvironment.NONE*/)
+@SpringBootTest(classes = ServiceTesterConfig.class)
 @Transactional
-//@Rollback()
-@Ignore
 public abstract class AbstractTester {
     @Inject
     public ObjectMapper objectMapper;
