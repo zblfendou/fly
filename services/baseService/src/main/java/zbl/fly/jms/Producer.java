@@ -1,10 +1,10 @@
 package zbl.fly.jms;
 
-import org.springframework.jms.core.JmsMessagingTemplate;
-
-import javax.inject.Inject;
+//import org.springframework.jms.core.JmsMessagingTemplate;
+//
+//import javax.inject.Inject;
 import javax.inject.Named;
-import javax.jms.Destination;
+//import javax.jms.Destination;
 
 /**
  * 描述:activemq 生产者
@@ -15,11 +15,11 @@ import javax.jms.Destination;
  */
 @Named
 public class Producer {
-    @Inject
-    private JmsMessagingTemplate jmsTemplate;
-
-    //发消息
-    public void sendMessage(Destination destination, String msg) {
-        jmsTemplate.convertAndSend(destination,msg);
-    }
+//    @Inject
+//    private JmsMessagingTemplate jmsTemplate;
+//
+//    //发消息
+//    public void sendMessage(Destination destination, String msg) {
+//        jmsTemplate.convertAndSend(destination,msg);
+//    }
 }

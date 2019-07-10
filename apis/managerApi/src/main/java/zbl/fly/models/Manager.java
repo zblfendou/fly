@@ -2,13 +2,13 @@ package zbl.fly.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.SneakyThrows;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
+import javax.ws.rs.BeanParam;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

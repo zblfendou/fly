@@ -1,7 +1,7 @@
 package zbl.fly.jms;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.jms.annotation.JmsListener;
+//import org.springframework.jms.annotation.JmsListener;
 
 import javax.inject.Named;
 
@@ -16,7 +16,7 @@ import javax.inject.Named;
 @Slf4j
 public class Consumer1 {
     //接收消息
-    @JmsListener(destination = "mytest.queue")
+//    @JmsListener(destination = "mytest.queue")
     public void receiveQueue(String text) {
         log.debug("消费者1收到消息：{}", text);
     }

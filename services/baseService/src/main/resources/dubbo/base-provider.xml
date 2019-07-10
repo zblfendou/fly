@@ -8,5 +8,6 @@ http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:application name="${spring.application.name:application}"/>
     <dubbo:registry address="${dubbo.registry.address}"/>
     <dubbo:protocol port="${dubbo.protocol.port:-1}" name="dubbo"/>
+    <dubbo:protocol port="${dubbo.rest.protocol.port:9999}" name="${dubbo.rest.protocol.name:rest}" threads="500" accepts="100"/>
     <dubbo:provider delay="-1" timeout="10000" retries="0"/>
 </beans>
