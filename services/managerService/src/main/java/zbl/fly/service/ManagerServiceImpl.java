@@ -1,5 +1,6 @@
 package zbl.fly.service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +30,7 @@ import static org.springframework.data.domain.Sort.Direction.ASC;
 import static org.springframework.util.StringUtils.hasText;
 
 @Named("managerService")
+@Service
 @Slf4j
 public class ManagerServiceImpl implements ManagerService {
 

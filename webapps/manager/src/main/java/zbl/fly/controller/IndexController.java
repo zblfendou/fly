@@ -44,7 +44,7 @@ public class IndexController {
                                 @RequestParam(value = "captchaID", required = false) String captchaID) {
         final Object needcaptcha = request.getSession(true).getAttribute(JCaptchaConfig.S_KEY_NEED_CAPTCHA);
 
-        if (needcaptcha != null && new Date().getTime() - (Long) needcaptcha <= JCaptchaConfig.LOGIN_CAPTCHA_TTL && (isEmpty(captchaID) || isEmpty(code))) {
+        if (needcaptcha != null && System.currentTimeMillis() - (Long) needcaptcha <= JCaptchaConfig.LOGIN_CAPTCHA_TTL && (isEmpty(captchaID) || isEmpty(code))) {
             return buildErrorAjaxResult(3);
         }
 
@@ -65,9 +65,10 @@ public class IndexController {
                 return AjaxResult.error(-2, "尚未激活");
             case STOPED:
                 return AjaxResult.error(-3, "已停用");
-
+            default:
+                return AjaxResult.success();
         }
-        return success();
+
     }
 
     @RequestMapping("/modifyUserInfo.do")
@@ -80,7 +81,7 @@ public class IndexController {
 
 
     private AjaxResult buildErrorAjaxResult(int errorCode) {
-        request.getSession(true).setAttribute(JCaptchaConfig.S_KEY_NEED_CAPTCHA, new Date().getTime());
+        request.getSession(true).setAttribute(JCaptchaConfig.S_KEY_NEED_CAPTCHA, System.currentTimeMillis());
         return AjaxResult.error(errorCode, generateCaptchaID());
     }
 

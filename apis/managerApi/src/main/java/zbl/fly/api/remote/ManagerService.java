@@ -5,17 +5,16 @@ import zbl.fly.models.Manager;
 import zbl.fly.models.PermGroup;
 import zbl.fly.models.Role;
 
-import javax.validation.constraints.Min;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 @Path("manager")
-@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_OCTET_STREAM})
-@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_OCTET_STREAM})
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public interface ManagerService {
-    @GET
-    @Path("get/{userName}")
-    Manager getManagerByUserName(@PathParam("userName") String userName);
+//    @GET
+//    @Path("get/{userName}")
+    Manager getManagerByUserName(/*@PathParam("userName")*/ String userName);
 
     Manager createManager(String username, String name, String phoneNum, String email, String roleName, String pwd);
     @GET
