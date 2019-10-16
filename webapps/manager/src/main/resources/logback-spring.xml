@@ -22,9 +22,9 @@
 
     <!--输出到文件-->
     <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/service.log</file>
+        <file>logs/manager.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/service-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/manager-%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
             <!--<timeBasedFileNamingAndTriggeringPolicy-->
@@ -42,9 +42,9 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
-        <file>logs/service-error.log</file>
+        <file>logs/manager-error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/service-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/manager-error-%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>

@@ -27,7 +27,7 @@
         <repository>
             <name>local</name>
             <id>local</id>
-            <url>http://122.14.213.151:8089/repository/internal/</url>
+            <url>http://119.10.116.226:8081/nexus/content/groups/public</url>
         </repository>
     </repositories>
     <parent>
@@ -38,7 +38,7 @@
     </parent>
 
     <dependencies>
-        
+
     </dependencies>
     <build>
 
