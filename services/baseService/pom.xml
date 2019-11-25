@@ -69,6 +69,10 @@
                     <artifactId>org.xerial.snappy</artifactId>
                     <groupId>snappy-java</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>redisson</artifactId>
+                    <groupId>org.redisson</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
 
